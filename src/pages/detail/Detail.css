@@ -1,0 +1,43 @@
+.taskDetailLayout {
+  margin: 0 15vw;
+  padding-top: 5vh;
+}
+
+.detailContainer {
+  background-color: var(--main-primary);
+  color: var(--text-secondary);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.detailContainer {
+  padding: 40px;
+}
+
+.detailContainer p {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  word-wrap: break-word;
+}
+
+.taskTitle {
+  font-size: 2rem;
+}
+
+.statusComplete {
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  height: 2rem;
+  width: 9rem;
+  background-color: greenyellow;
+}
+
+.statusNotComplete {
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  height: 2rem;
+  width: 9rem;
+  background-color: red;
+}

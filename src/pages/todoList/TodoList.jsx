@@ -16,10 +16,10 @@ export default function TodoList() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [buttonTrigger]);
 
-  const fetchData = async () => {
-    await api
+  const fetchData = () => {
+    api
       .getTasks()
       .then((tasks) => setTaskData(tasks))
       .catch((error) => console.log(error))
@@ -33,6 +33,15 @@ export default function TodoList() {
     console.log("refresh prevented");
   };
 
+  const deleteClick = async (id) => {
+    await api
+      .closeTask(id)
+      .then((isSuccess) => console.log(isSuccess))
+      .catch((error) => console.log(error));
+
+    setButtonTrigger(!buttonTrigger);
+  };
+
   let result;
   if (isReady) {
     result = (
@@ -40,11 +49,11 @@ export default function TodoList() {
         {console.log(taskData)}
         <section className="todoListLayout">
           <div className="newContainer taskContainer">
-            <p className="taskTitle">Create New Task</p>
+            <p className="taskTitle">Create New list</p>
             <form onSubmit={onSubmit}>
-              <label>Task Title</label>
+              <label>List Title</label>
               <input type="text" />
-              <label>Task Description</label>
+              <label>List Description</label>
               <input type="text" />
               <input
                 className="todoButton"
@@ -56,9 +65,9 @@ export default function TodoList() {
 
           <div className="taskListContainer">
             <div className="searchContainer taskContainer">
-              <p className="taskTitle">Search Task</p>
+              <p className="taskTitle">Search list</p>
               <form onSubmit={onSubmit}>
-                <label>Task Title</label>
+                <label>List Title</label>
                 <input type="text" />
                 <div className="TaskButtonContainer">
                   <input className="todoButton" type="submit" value="Search" />
@@ -88,10 +97,28 @@ export default function TodoList() {
                       >
                         Detail
                       </li>
-                      <li>
-                        <i className="fa-regular fa-circle-check checkButton" />
+                      <li
+                        onClick={() => {
+                          console.log("clicked");
+                          item.content = (
+                            <span style={{ textDecoration: "line-through" }}>
+                              {item.content}
+                            </span>
+                          );
+                        }}
+                      >
+                        {item.completed ? (
+                          <i className="fa-solid fa-rotate-left"></i>
+                        ) : (
+                          <i className="fa-regular fa-circle-check checkButton" />
+                        )}
                       </li>
-                      <li>
+
+                      <li
+                        onClick={() => {
+                          deleteClick(item.id);
+                        }}
+                      >
                         <i className="fa-solid fa-trash deleteButton" />
                       </li>
                     </ul>
