@@ -1,0 +1,58 @@
+.layoutHome {
+  margin: 10vh 8vw;
+}
+
+.homeContent {
+  width: 60%;
+  margin: auto;
+}
+
+.logoContainer {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 6px var(--main-primary);
+  border-radius: 20px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  place-items: center;
+}
+
+.logoInyong {
+  text-align: center;
+  padding: 2vh;
+  font-size: 5vw;
+  font-weight: 900;
+  color: var(--main-alternative);
+}
+
+.logoInyong i {
+  color: var(--main-secondary);
+}
+
+.homeText {
+  font-size: 2vw;
+  color: var(--text-primary);
+}
+
+.introduction {
+  text-align: center;
+  padding-bottom: 2vh;
+}
+
+.checkoutTitle {
+  margin-top: 5vh;
+}
+
+.homeCheckout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main-primary);
+  margin-top: 20px;
+  padding: 15px 15px;
+  border-radius: 20px;
+}
+
+.homeCheckout p {
+  color: #ffffff;
+}

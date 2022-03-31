@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap");
+
+:root {
+  font-size: 16px;
+  font-family: "Lato";
+  --text-primary: #3700b3;
+  --text-secondary: #ffffff;
+  --bg-primary: #ffffff;
+  --bg-secondary: #000000;
+  --main-primary: #6200ee;
+  --main-alternative: #3700b3;
+  --main-secondary: #03dac5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* body::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--main-secondary);
+}
+
+body::-webkit-scrollbar-button {
+  background-color: var(--main-primary);
+} */

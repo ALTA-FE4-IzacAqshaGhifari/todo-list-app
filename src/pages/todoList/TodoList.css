@@ -1,0 +1,97 @@
+.todoListLayout {
+  margin: 0 15vw;
+  padding-top: 5vh;
+}
+
+.taskContainer {
+  background-color: var(--main-primary);
+  color: var(--text-secondary);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.newContainer {
+  padding: 40px;
+}
+
+.taskTitle {
+  font-size: 1.5rem;
+}
+
+.taskContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskContainer form label {
+  padding-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.taskContainer form input {
+  font-size: 1.1rem;
+  height: 2rem;
+}
+
+.todoButton {
+  margin-top: 1rem;
+  width: 100px;
+  border-radius: 5px;
+  background-color: var(--main-secondary);
+  color: var(--main-alternative);
+}
+
+.clearButton {
+  margin-left: 20px;
+  background-color: red;
+  color: #ffffff;
+}
+
+.taskListContainer {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--main-alternative);
+}
+
+.listContainer {
+  margin-top: 20px;
+}
+
+.taskContent {
+  border: 2px solid #ffffff;
+  height: 2.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 12px;
+}
+
+.taskContent ul {
+  list-style-type: none;
+}
+
+.taskContent ul li {
+  display: inline;
+  margin: auto 10px;
+}
+
+.taskContent ul li i {
+  font-size: 1.5rem;
+}
+
+.detailButton:hover {
+  color: aqua;
+  cursor: pointer;
+}
+
+.checkButton:hover {
+  color: rgb(75, 255, 47);
+}
+
+.deleteButton:hover {
+  color: rgb(255, 47, 47);
+}

@@ -1,0 +1,21 @@
+html {
+  background-color: var(--bg-primary);
+}
+
+main {
+  min-height: 90vh;
+}
+
+@media (max-width: 600px) {
+  main {
+    margin-left: 0;
+    margin-bottom: 5rem;
+  }
+}
+
+@media (min-width: 600px) {
+  main {
+    margin-left: 5rem;
+    margin-bottom: 0;
+  }
+}
