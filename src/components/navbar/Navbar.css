@@ -2,6 +2,7 @@
   position: fixed;
   background-color: var(--main-primary);
   transition: 200ms ease;
+  border-right: 1px solid var(--bg-primary);
 }
 
 .navbarNav {
@@ -53,6 +54,8 @@
 
   .navbarNav {
     flex-direction: row;
+    border-top: 1px solid var(--bg-primary);
+    border-right: none;
   }
 
   .navItem {
