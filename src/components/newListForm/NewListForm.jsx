@@ -34,9 +34,13 @@ export default function NewListForm({ onSubmit }) {
         }}
       >
         <label>List Title</label>
-        <input type="text" {...listTitle} />
+        <input type="text" {...listTitle} placeholder="Input Title" />
         <label>List Description</label>
-        <input type="text" {...listDescription} />
+        <input
+          type="text"
+          {...listDescription}
+          placeholder="Input Description"
+        />
         <input className="todoButton" type="submit" value="Submit" />
       </form>
     </div>

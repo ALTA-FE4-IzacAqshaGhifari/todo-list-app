@@ -38,7 +38,7 @@ export default function TodoList() {
         content: title,
         description: descrip,
       })
-      .then((task) => console.log(task))
+      .then((task) => "")
       .catch((error) => console.log(error));
     await fetchData();
   };
@@ -50,7 +50,7 @@ export default function TodoList() {
       setIsLoading(true);
       await api
         .updateTask(id, { content: `(task completed) ${value}` })
-        .then((isSuccess) => console.log(isSuccess))
+        .then((isSuccess) => isSuccess)
         .catch((error) => console.log(error));
       await fetchData();
       setIsLoading(false);
@@ -62,15 +62,29 @@ export default function TodoList() {
 
     await api
       .closeTask(id)
-      .then((isSuccess) => console.log(isSuccess))
+      .then((isSuccess) => isSuccess)
       .catch((error) => console.log(error));
     await fetchData();
     setIsLoading(false);
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log("refresh prevented");
+  const escapeRegExp = (value) => {
+    return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+  };
+
+  const requestSearch = (searchValue) => {
+    const searchRegex = new RegExp(escapeRegExp(searchValue), "i");
+    const filteredData = taskData.filter((row) => {
+      return Object.keys(row).some((field) => {
+        return searchRegex.test(row[field] ? row[field] : null);
+      });
+    });
+    setTaskData(filteredData);
+    console.log(filteredData);
+  };
+
+  const clearClick = (e) => {
+    fetchData();
   };
 
   let result;
@@ -89,15 +103,24 @@ export default function TodoList() {
           <div className="taskListContainer">
             <div className="searchContainer taskContainer">
               <p className="taskTitle">Search list</p>
-              <form onSubmit={onSubmit}>
-                <label>List Title</label>
-                <input type="text" />
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="Write title or description"
+                  onChange={(e) => requestSearch(e.target.value)}
+                />
                 <div className="TaskButtonContainer">
-                  <input className="todoButton" type="submit" value="Search" />
                   <input
                     className="clearButton todoButton"
                     type="submit"
                     value="Clear"
+                    onClick={() => {
+                      clearClick();
+                    }}
                   />
                 </div>
               </form>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  // const [dark, setDark] = useState(true);
+
   return (
     <nav className="navbar">
       <ul className="navbarNav">
@@ -33,7 +35,12 @@ export default function Navbar() {
           </li>
         </Link>
 
-        <li className="navItem">
+        <li
+          className="navItem"
+          // onClick={() => {
+          //   setDark(!dark);
+          // }}
+        >
           <i className="fa-solid fa-sun"></i>
           <p className="navText">Theme</p>
         </li>
