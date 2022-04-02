@@ -6,21 +6,26 @@ export default function About() {
     <>
       <div className="aboutLayout">
         <section className="contentAbout">
-          <h1>
-            About <span>"Me"</span>
-          </h1>
-          <div className="izacPicture" />
+          <h1>About "Me"</h1>
+          <div className="aboutMainContent">
+            <div className="izacPicture" />
+            <div className="aboutMainText">
+              <p>
+                "Hello User!!!
+                <br />
+                <br />
+                My name is <span>Izac</span>... i created this InyongList Web
+                App using ReactJS Library and Todoist API.
+                <br />I hope you like InyongList as much as i do... Have a nice
+                day!!!
+              </p>
+            </div>
+          </div>
+
           <p>
-            "Hello User!!! My name is <span>Izac</span>... i hope you like this{" "}
-            <span>InyongList</span>
-            {"  "}Web App as much as i do...
-            <br />
-            Enjoy It!!! and nice to meet you
-            <br />
-            <br />
             Want to know more about me??
             <br />
-            Checkout my Social Media Account:
+            Checkout my social media accounts:
           </p>
           <div className="SosmedIcon">
             <a
@@ -44,9 +49,16 @@ export default function About() {
             >
               <i className="fa-brands fa-facebook"></i>
             </a>
+            <a
+              href="https://www.linkedin.com/in/izac-aqsha-ghifari-ab9991227/"
+              rel="noreferrer"
+              target={"_blank"}
+            >
+              <i className="fa-brands fa-linkedin"></i>
+            </a>
           </div>
           <p>
-            Send me Feedback in email : <span>izacaqsha@gmail.com</span>
+            Want to send feedbacks? email me at <span>izacaqsha@gmail.com</span>
           </p>
         </section>
       </div>

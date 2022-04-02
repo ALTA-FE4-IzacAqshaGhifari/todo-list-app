@@ -43,3 +43,32 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 600px) {
+  .spinner {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+
+    border: 5px solid var(--main-secondary);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: spin 1s infinite;
+  }
+
+  .innerSpinner {
+    width: 70px;
+    height: 70px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--main-primary);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+}

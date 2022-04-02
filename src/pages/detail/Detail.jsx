@@ -32,7 +32,7 @@ export default function Detail() {
       <>
         <section className="taskDetailLayout">
           <div className="detailContainer">
-            <h1 className="taskTitle">List Detail:</h1>
+            <h1 className="detailTitle">List Detail:</h1>
             <p>
               Title :<br />
               {detail.content}

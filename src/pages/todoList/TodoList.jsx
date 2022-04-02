@@ -12,19 +12,17 @@ export default function TodoList() {
   const navigate = useNavigate();
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [buttonTrigger, setButtonTrigger] = useState(true);
   const [taskData, setTaskData] = useState([]);
-  // const [newList, setNewList] = useState([]);
 
   const api = new TodoistApi(`${process.env.REACT_APP_API_KEY}`);
 
   useEffect(() => {
     fetchData();
-  }, [buttonTrigger]);
+  }, []);
 
-  const fetchData = () => {
+  const fetchData = async () => {
     setIsLoading(true);
-    api
+    await api
       .getTasks()
       .then((tasks) => setTaskData(tasks))
       .catch((error) => console.log(error))
@@ -42,7 +40,7 @@ export default function TodoList() {
       })
       .then((task) => console.log(task))
       .catch((error) => console.log(error));
-    setButtonTrigger(!buttonTrigger);
+    await fetchData();
   };
 
   const checkButton = async (id, value) => {
@@ -54,8 +52,7 @@ export default function TodoList() {
         .updateTask(id, { content: `(task completed) ${value}` })
         .then((isSuccess) => console.log(isSuccess))
         .catch((error) => console.log(error));
-
-      setButtonTrigger(!buttonTrigger);
+      await fetchData();
       setIsLoading(false);
     }
   };
@@ -67,9 +64,8 @@ export default function TodoList() {
       .closeTask(id)
       .then((isSuccess) => console.log(isSuccess))
       .catch((error) => console.log(error));
-
+    await fetchData();
     setIsLoading(false);
-    setButtonTrigger(!buttonTrigger); // bisa diganti langsung dengan memanggil function fetchData
   };
 
   const onSubmit = (e) => {
@@ -81,12 +77,11 @@ export default function TodoList() {
   if (isReady) {
     result = (
       <>
-        {isLoading ? <ProcessSpin /> : 0}
+        {isLoading ? <ProcessSpin /> : ""}
         {console.log(taskData)}
         <section className="todoListLayout">
           <NewListForm
             onSubmit={(title, description) => {
-              // setNewList([{ content: title, description: description }]);
               addHandle(title, description);
             }}
           />
@@ -113,8 +108,8 @@ export default function TodoList() {
                 return (
                   <div key={item.id} className="taskContent">
                     <p>
-                      {item.content.length > 40
-                        ? item.content.slice(0, 40) + " . . ."
+                      {item.content.length > 35
+                        ? item.content.slice(0, 35) + " . . ."
                         : item.content}
                     </p>
                     <ul>
@@ -140,7 +135,6 @@ export default function TodoList() {
 
                       <li
                         onClick={() => {
-                          // !isLoading&& ketika loading maka disable
                           deleteButton(item.id);
                         }}
                       >

@@ -56,3 +56,31 @@
 .homeCheckout p {
   color: #ffffff;
 }
+
+@media (max-width: 1000px) {
+  .homeContent {
+    width: 100%;
+  }
+
+  .logoInyong {
+    font-size: 2.5rem;
+  }
+
+  .homeText {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logoInyong {
+    font-size: 2rem;
+  }
+
+  .homeText {
+    font-size: 1rem;
+  }
+
+  .homeCheckout {
+    font-size: 0.7rem;
+  }
+}

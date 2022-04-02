@@ -22,3 +22,10 @@
     transform: rotate(1turn);
   }
 }
+
+@media (max-width: 600px) {
+  .processSpin::after {
+    width: 30px;
+    height: 30px;
+  }
+}
