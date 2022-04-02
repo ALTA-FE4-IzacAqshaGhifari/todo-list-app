@@ -5,12 +5,16 @@ import "./TodoList.css";
 import { TodoistApi } from "@doist/todoist-api-typescript";
 
 import LoadSpin from "../../components/loadSpin/LoadSpin";
+import NewListForm from "../../components/newListForm/NewListForm";
+import ProcessSpin from "../../components/processSpin/ProcessSpin";
 
 export default function TodoList() {
   const navigate = useNavigate();
   const [isReady, setIsReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [buttonTrigger, setButtonTrigger] = useState(true);
   const [taskData, setTaskData] = useState([]);
+  // const [newList, setNewList] = useState([]);
 
   const api = new TodoistApi(`${process.env.REACT_APP_API_KEY}`);
 
@@ -19,6 +23,7 @@ export default function TodoList() {
   }, [buttonTrigger]);
 
   const fetchData = () => {
+    setIsLoading(true);
     api
       .getTasks()
       .then((tasks) => setTaskData(tasks))
@@ -26,6 +31,45 @@ export default function TodoList() {
       .finally(() => {
         setIsReady(true);
       });
+    setIsLoading(false);
+  };
+
+  const addHandle = async (title, descrip) => {
+    await api
+      .addTask({
+        content: title,
+        description: descrip,
+      })
+      .then((task) => console.log(task))
+      .catch((error) => console.log(error));
+    setButtonTrigger(!buttonTrigger);
+  };
+
+  const checkButton = async (id, value) => {
+    if (value.slice(0, 16) === "(task completed)") {
+      return false;
+    } else {
+      setIsLoading(true);
+      await api
+        .updateTask(id, { content: `(task completed) ${value}` })
+        .then((isSuccess) => console.log(isSuccess))
+        .catch((error) => console.log(error));
+
+      setButtonTrigger(!buttonTrigger);
+      setIsLoading(false);
+    }
+  };
+
+  const deleteButton = async (id) => {
+    setIsLoading(true);
+
+    await api
+      .closeTask(id)
+      .then((isSuccess) => console.log(isSuccess))
+      .catch((error) => console.log(error));
+
+    setIsLoading(false);
+    setButtonTrigger(!buttonTrigger); // bisa diganti langsung dengan memanggil function fetchData
   };
 
   const onSubmit = (e) => {
@@ -33,35 +77,19 @@ export default function TodoList() {
     console.log("refresh prevented");
   };
 
-  const deleteClick = async (id) => {
-    await api
-      .closeTask(id)
-      .then((isSuccess) => console.log(isSuccess))
-      .catch((error) => console.log(error));
-
-    setButtonTrigger(!buttonTrigger);
-  };
-
   let result;
   if (isReady) {
     result = (
       <>
+        {isLoading ? <ProcessSpin /> : 0}
         {console.log(taskData)}
         <section className="todoListLayout">
-          <div className="newContainer taskContainer">
-            <p className="taskTitle">Create New list</p>
-            <form onSubmit={onSubmit}>
-              <label>List Title</label>
-              <input type="text" />
-              <label>List Description</label>
-              <input type="text" />
-              <input
-                className="todoButton"
-                type="submit"
-                value="Submit"
-              ></input>
-            </form>
-          </div>
+          <NewListForm
+            onSubmit={(title, description) => {
+              // setNewList([{ content: title, description: description }]);
+              addHandle(title, description);
+            }}
+          />
 
           <div className="taskListContainer">
             <div className="searchContainer taskContainer">
@@ -80,6 +108,7 @@ export default function TodoList() {
               </form>
             </div>
             <div className="listContainer taskContainer">
+              {taskData == false ? "No List  . . . . " : ""}
               {taskData.map((item) => {
                 return (
                   <div key={item.id} className="taskContent">
@@ -99,12 +128,7 @@ export default function TodoList() {
                       </li>
                       <li
                         onClick={() => {
-                          console.log("clicked");
-                          item.content = (
-                            <span style={{ textDecoration: "line-through" }}>
-                              {item.content}
-                            </span>
-                          );
+                          checkButton(item.id, item.content);
                         }}
                       >
                         {item.completed ? (
@@ -116,7 +140,8 @@ export default function TodoList() {
 
                       <li
                         onClick={() => {
-                          deleteClick(item.id);
+                          // !isLoading&& ketika loading maka disable
+                          deleteButton(item.id);
                         }}
                       >
                         <i className="fa-solid fa-trash deleteButton" />

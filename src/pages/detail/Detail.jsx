@@ -48,8 +48,8 @@ export default function Detail() {
               {detail.created.slice(0, 10)}
             </p>
             <p>Status:</p>
-            {detail.completed ? (
-              <p className="statusComplete">Complete</p>
+            {detail.content.slice(0, 16) === "(task completed)" ? (
+              <p className="statusComplete">Completed</p>
             ) : (
               <p className="statusNotComplete">Not Complete</p>
             )}
