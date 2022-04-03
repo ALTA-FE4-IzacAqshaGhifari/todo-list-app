@@ -92,7 +92,6 @@ export default function TodoList() {
     result = (
       <>
         {isLoading ? <ProcessSpin /> : ""}
-        {console.log(taskData)}
         <section className="todoListLayout">
           <NewListForm
             onSubmit={(title, description) => {

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ThemeContext } from "../../routes/WebRoute";
 import "./NewListForm.css";
 
 const useInputValue = (initialValue) => {
@@ -22,8 +23,16 @@ export default function NewListForm({ onSubmit }) {
   const { resetTitle, ...listTitle } = useInputValue("");
   const { resetDescrip, ...listDescription } = useInputValue("");
 
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
-    <div className="newContainer taskContainer">
+    <div
+      className={
+        isDarkTheme
+          ? "newContainer taskContainer darkNewListContainer"
+          : "newContainer taskContainer"
+      }
+    >
       <p className="taskTitle">Create New list</p>
       <form
         onSubmit={(e) => {

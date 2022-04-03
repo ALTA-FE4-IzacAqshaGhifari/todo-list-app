@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../../routes/WebRoute";
 
 export default function Navbar() {
-  // const [dark, setDark] = useState(true);
+  const { isDarkTheme, themeButton } = useContext(ThemeContext);
 
   return (
-    <nav className="navbar">
+    <nav className={isDarkTheme ? "navbar darkNavbar" : "navbar"}>
       <ul className="navbarNav">
         <Link to="/" style={{ color: "inherit", textDecoration: "inherit" }}>
           <li className="navItem">
@@ -36,10 +37,10 @@ export default function Navbar() {
         </Link>
 
         <li
-          className="navItem"
-          // onClick={() => {
-          //   setDark(!dark);
-          // }}
+          className="navItem navThemeButton"
+          onClick={() => {
+            themeButton();
+          }}
         >
           <i className="fa-solid fa-sun"></i>
           <p className="navText">Theme</p>

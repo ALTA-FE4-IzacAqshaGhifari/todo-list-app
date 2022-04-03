@@ -1,6 +1,8 @@
 .aboutLayout {
   width: 60%;
+  min-height: 100vh;
   margin: auto auto;
+  padding-top: 10vh;
   padding-bottom: 110px;
 }
 
@@ -9,7 +11,10 @@
   background-color: var(--main-primary);
   border-radius: 20px;
   padding: 20px;
-  margin-top: 10vh;
+}
+
+.darkContentAbout {
+  background-color: var(--main-alternative);
 }
 
 .aboutMainContent {

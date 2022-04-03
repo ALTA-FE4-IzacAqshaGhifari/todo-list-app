@@ -1,5 +1,6 @@
 .layoutHome {
-  margin: 10vh 8vw;
+  padding: 10vh 8vw;
+  min-height: 100vh;
 }
 
 .homeContent {
@@ -31,7 +32,7 @@
 
 .homeText {
   font-size: 2vw;
-  color: var(--text-primary);
+  color: var(--main-alternative);
 }
 
 .introduction {
@@ -43,6 +44,10 @@
   margin-top: 5vh;
 }
 
+.darkCheckoutTitle {
+  color: #ffffff;
+}
+
 .homeCheckout {
   display: flex;
   justify-content: space-between;
@@ -51,6 +56,10 @@
   margin-top: 20px;
   padding: 15px 15px;
   border-radius: 20px;
+}
+
+.homeCheckoutDark {
+  background-color: var(--main-alternative);
 }
 
 .homeCheckout p {

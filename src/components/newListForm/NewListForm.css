@@ -2,6 +2,10 @@
   padding: 40px;
 }
 
+.darkNewListContainer {
+  background-color: var(--main-alternative);
+}
+
 @media (max-width: 1000px) {
   .newContainer {
     padding: 20px;

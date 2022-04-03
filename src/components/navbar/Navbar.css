@@ -14,6 +14,10 @@
   justify-content: space-between;
 }
 
+.darkNavbar {
+  background-color: var(--main-alternative);
+}
+
 .navItem {
   height: 5rem;
   width: 100%;
@@ -43,6 +47,10 @@
 
 .navItem:hover {
   filter: grayscale(0) opacity(1);
+}
+
+.navThemeButton:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {

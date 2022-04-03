@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Layout.css";
 
 import Navbar from "../navbar/Navbar";
+import { ThemeContext } from "../../routes/WebRoute";
 
 export default function Layout(props) {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
     <>
       <Navbar />
-      <main>{props.children}</main>
+      <main className={isDarkTheme ? "darkMain" : null}>{props.children}</main>
     </>
   );
 }

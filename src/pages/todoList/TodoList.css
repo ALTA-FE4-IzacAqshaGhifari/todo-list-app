@@ -1,6 +1,8 @@
 .todoListLayout {
   margin: 0 15vw;
+  min-height: 100vh;
   padding-top: 5vh;
+  padding-bottom: 5vh;
 }
 
 .taskContainer {
@@ -98,6 +100,10 @@
   color: rgb(255, 47, 47);
 }
 
+.searchContainer .taskTitle {
+  margin-bottom: 10px;
+}
+
 @media (max-width: 1000px) {
   .todoListLayout {
     margin: 0 10vw;
@@ -124,6 +130,10 @@
 }
 
 @media (max-width: 700px) {
+  .todoListLayout {
+    padding-bottom: 110px;
+  }
+
   .taskListContainer {
     padding: 10px;
   }
@@ -155,10 +165,6 @@
 
   .taskContent ul {
     min-width: 103px;
-  }
-
-  .taskListContainer {
-    margin-bottom: 110px;
   }
 }
 

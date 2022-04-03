@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../routes/WebRoute";
 import "./About.css";
 
 export default function About() {
+  const { isDarkTheme } = useContext(ThemeContext);
   return (
     <>
       <div className="aboutLayout">
-        <section className="contentAbout">
+        <section
+          className={
+            isDarkTheme ? "contentAbout darkContentAbout" : "contentAbout"
+          }
+        >
           <h1>About "Me"</h1>
           <div className="aboutMainContent">
             <div className="izacPicture" />
