@@ -42,7 +42,11 @@ export default function Navbar() {
             themeButton();
           }}
         >
-          <i className="fa-solid fa-sun"></i>
+          {isDarkTheme ? (
+            <i class="fa-solid fa-moon" />
+          ) : (
+            <i className="fa-solid fa-sun" />
+          )}
           <p className="navText">Theme</p>
         </li>
       </ul>
